@@ -1,0 +1,19 @@
+.App {
+	margin: 5%;
+}
+.chat-content {
+	height: 350px;
+	overflow-y: auto;
+	.line {
+		margin-top: 10px;
+		display: flex;
+	}
+	.chat-box {
+		background-color: #eee;
+		padding: 5px;
+		max-width: 200px;
+	}
+	.mine {
+		margin-left: auto;
+	}
+}

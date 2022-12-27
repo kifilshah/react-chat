@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+
+import './App.scss';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<div className="App">
+			<div className="chat-content">
+				<div className="line">
+					<span className="chat-box">안녕?</span>
+				</div>
+				<div className="line">
+					<span className="chat-box mine">안녕?</span>
+				</div>
+			</div>
+			<input type="text" className="chat-box" id="input" />
+			<button id="send">전송</button>
+		</div>
+	);
 }
 
 export default App;
