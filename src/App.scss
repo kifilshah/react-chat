@@ -1,25 +1,38 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
 .App {
+	display: flex;
+	justify-content: space-between;
+	flex-flow: column;
 	max-width: 800px;
+	height: 100vh;
 	margin: 0 auto;
 	padding: 2em;
 	font-size: 16px;
+	background-color: #ede0df;
+	border-radius: 2em;
 }
 .chat-content {
-	height: 350px;
+	flex: 1;
 	overflow-y: auto;
 	.line {
 		margin-top: 10px;
 		display: flex;
 	}
 	.chat-box {
-		background-color: #eee;
-		padding: 5px;
-		border-radius: 10px;
+		background-color: #fff;
+		padding: 0.8em;
+		border-radius: 0.5em;
 		max-width: 200px;
 		font-size: 1em;
 	}
 	.mine {
 		margin-left: auto;
+		background-color: #442929;
+		color: #fff;
 	}
 }
 
@@ -27,12 +40,27 @@ form {
 	display: flex;
 	align-items: stretch;
 	justify-content: space-between;
+	font-size: 1em;
 	input {
 		width: calc(100% - 100px);
-		height: 30px;
-		border: 1px solid #000;
+		height: 40px;
+		padding: 0.8em;
+		background-color: #fff;
+		border: 1px solid #534343;
+		border-radius: 0.5em;
 	}
 	button {
 		width: 100px;
+		margin-left: 5px;
+		background-color: #7d2a30;
+		border: 0;
+		border-radius: 0.5em;
+		color: #fff;
+		box-shadow: none;
+		&:disabled {
+			opacity: 0.6;
+			background-color: #fff;
+			color: #7d2a30;
+		}
 	}
 }

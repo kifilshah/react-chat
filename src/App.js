@@ -4,32 +4,12 @@ import { Configuration, OpenAIApi } from "openai";
 
 function App() {
 	const [value, setValue] = useState('');
-	const [prompt, setPrompt] = useState([]);
-	const [res, setRes] = useState([]);
-
 	const [msg, setMsg] = useState([]);
 
 	const configuration = new Configuration({
 		apiKey: process.env.REACT_APP_API_KEY,
 	});
 	const openai = new OpenAIApi(configuration);
-
-	let data = [
-		{
-			"prompt": "prompt1111",
-			"res": "res1111"
-		},
-		{
-			"prompt": "prompt2222",
-			"res": "res2222"
-		},
-		{
-			"prompt": "prompt3333",
-			"res": "res33333"
-		},
-	];
-
-	//console.log(data)
 
 	return (
 		<div className="App">
@@ -45,15 +25,7 @@ function App() {
 							</div>
 						</>
 					))
-
 				}
-				{/* {
-					res.map((data, i) => (
-						<div className="line" key={i}>
-							<span className="chat-box">{data}</span>
-						</div>
-					))
-				} */}
 			</div>
 
 			<form>
@@ -62,13 +34,6 @@ function App() {
 				}} />
 				<button onClick={(e) => {
 					e.preventDefault();
-
-
-
-					// const copy = [...prompt];
-					// copy.push(value);
-					// setPrompt(copy);
-					// setValue('');
 
 					openai.createCompletion({
 						model: "text-davinci-003",
@@ -79,14 +44,12 @@ function App() {
 						frequency_penalty: 0,
 						presence_penalty: 0,
 					}).then((result) => {
-						console.log(result.data.choices[0].text);
-						// const copy = [...res];
-						// copy.push(result.data.choices[0].text);
-						// setRes(copy);
+						//console.log(result.data.choices[0].text);
 						const chat = {
 							prompt: value,
 							res: result.data.choices[0].text
 						}
+
 						const copy = [...msg]
 						copy.push(chat)
 						setMsg(copy)
