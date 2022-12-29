@@ -1,5 +1,8 @@
 .App {
-	margin: 5%;
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 2em;
+	font-size: 16px;
 }
 .chat-content {
 	height: 350px;
@@ -11,9 +14,25 @@
 	.chat-box {
 		background-color: #eee;
 		padding: 5px;
+		border-radius: 10px;
 		max-width: 200px;
+		font-size: 1em;
 	}
 	.mine {
 		margin-left: auto;
+	}
+}
+
+form {
+	display: flex;
+	align-items: stretch;
+	justify-content: space-between;
+	input {
+		width: calc(100% - 100px);
+		height: 30px;
+		border: 1px solid #000;
+	}
+	button {
+		width: 100px;
 	}
 }
