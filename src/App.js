@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import './App.scss';
 import { Configuration, OpenAIApi } from "openai";
+import moment from 'moment';
+import 'moment/locale/ko';
 
 function App() {
 	const [value, setValue] = useState('');
@@ -17,8 +19,9 @@ function App() {
 				{
 					msg.map((data, i) => (
 						<>
-							<div className="line">
-								<span className="chat-box mine">{data.prompt}</span>
+							<div className="line mine">
+								<span className="chat-box">{data.prompt}</span>
+								<span className="time">{data.date}</span>
 							</div>
 							<div className="line">
 								<span className="chat-box">{data.res}</span>
@@ -44,10 +47,13 @@ function App() {
 						frequency_penalty: 0,
 						presence_penalty: 0,
 					}).then((result) => {
-						//console.log(result.data.choices[0].text);
+						console.log(result.data);
+						const nowDate = moment().format('YYYY-MM-DD HH:mm:ss');
+
 						const chat = {
 							prompt: value,
-							res: result.data.choices[0].text
+							res: result.data.choices[0].text,
+							date: nowDate
 						}
 
 						const copy = [...msg]

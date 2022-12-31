@@ -18,9 +18,22 @@
 .chat-content {
 	flex: 1;
 	overflow-y: auto;
+	padding: 1em 0;
 	.line {
 		margin-top: 10px;
 		display: flex;
+		flex-flow: column;
+		&.mine {
+			.chat-box {
+				margin-left: auto;
+				background-color: #442929;
+				color: #fff;
+			}
+			.time {
+				margin-top: 0.5em;
+				margin-left: auto;
+			}
+		}
 	}
 	.chat-box {
 		background-color: #fff;
@@ -29,10 +42,8 @@
 		max-width: 200px;
 		font-size: 1em;
 	}
-	.mine {
-		margin-left: auto;
-		background-color: #442929;
-		color: #fff;
+	.time {
+		font-size: 0.8em;
 	}
 }
 
@@ -57,10 +68,12 @@ form {
 		border-radius: 0.5em;
 		color: #fff;
 		box-shadow: none;
+		cursor: pointer;
 		&:disabled {
 			opacity: 0.6;
 			background-color: #fff;
 			color: #7d2a30;
+			cursor: default;
 		}
 	}
 }
