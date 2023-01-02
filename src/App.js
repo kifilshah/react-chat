@@ -7,6 +7,7 @@ import 'moment/locale/ko';
 function App() {
 	const [value, setValue] = useState('');
 	const [msg, setMsg] = useState([]);
+	const [loading, setLoading] = useState(false);
 
 	const configuration = new Configuration({
 		apiKey: process.env.REACT_APP_API_KEY,
@@ -21,10 +22,11 @@ function App() {
 						<>
 							<div className="line mine">
 								<span className="chat-box">{data.prompt}</span>
-								<span className="time">{data.date}</span>
+								<span className="time">{data.promptTime}</span>
 							</div>
 							<div className="line">
 								<span className="chat-box">{data.res}</span>
+								<span className="time">{data.resTime}</span>
 							</div>
 						</>
 					))
@@ -37,6 +39,9 @@ function App() {
 				}} />
 				<button onClick={(e) => {
 					e.preventDefault();
+					setLoading(true);
+
+					const promptTime = moment().format('HH:mm:ss');
 
 					openai.createCompletion({
 						model: "text-davinci-003",
@@ -48,12 +53,15 @@ function App() {
 						presence_penalty: 0,
 					}).then((result) => {
 						console.log(result.data);
-						const nowDate = moment().format('YYYY-MM-DD HH:mm:ss');
+						setLoading(false);
+
+						const resTime = moment().format('HH:mm:ss');
 
 						const chat = {
 							prompt: value,
 							res: result.data.choices[0].text,
-							date: nowDate
+							promptTime: promptTime,
+							resTime: resTime
 						}
 
 						const copy = [...msg]
@@ -68,14 +76,6 @@ function App() {
 
 		</div>
 	);
-}
-
-function UserMsg({ value }) {
-	return (
-		<div className="line">
-			<span className="chat-box">{value}</span>
-		</div>
-	)
 }
 
 export default App;
