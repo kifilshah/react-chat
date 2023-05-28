@@ -34,7 +34,7 @@ function App() {
 			</div>
 
 			<form>
-				<input type="text" placeholder="입력하세요." value={value} onChange={(e) => {
+				<input type="text" placeholder="Type your message." value={value} onChange={(e) => {
 					setValue(e.target.value);
 				}} />
 				<button onClick={(e) => {
@@ -71,7 +71,7 @@ function App() {
 
 					});
 
-				}} disabled={!value}>전송</button>
+				}} disabled={!value}>Send</button>
 			</form>
 
 		</div>
